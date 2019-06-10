@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">
+            Trabalho TA 
+        </ui:define>
+        <ui:define name="conteudo">
+            <div align="center">
+                <h1>Empréstimos com vencimento para hoje</h1>
+            </div>
+            <h:form id="formListagem" prependId="false">
+                <div align="center">
+                    <p:panelGrid columns="12">
+                        <p:outputLabel value="Ordem: "/>
+                        <p:selectOneMenu id="ordem" value="#{controleEmprestimo.dao.ordem}">
+                            <f:selectItem itemLabel="ID" itemValue="id"/>
+                            <f:selectItem itemLabel="Titulo" itemValue="titulo"/>
+                            <p:ajax update="listagem"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Filtro: "/>
+                        <p:inputText value="#{controleEmprestimo.dao.filtro}"
+                                     size="20"/>
+                        <p:commandButton value="Filtrar" update="listagem"
+                                         icon="ui-icon-search"/>
+                        <p:outputLabel value="Máximo de objetos: "/>
+                        <p:inputNumber value="#{controleEmprestimo.dao.maximoObjetos}" size="5"
+                                       decimalPlaces="0" decimalSeparator=""
+                                       thousandSeparator=""/>
+                        <p:commandButton actionListener="#{controleEmprestimo.dao.primeiro()}"
+                                         update="listagem" icon="ui-icon-seek-first"/>
+                        <p:commandButton actionListener="#{controleEmprestimo.dao.anterior()}"
+                                         update="listagem" icon="ui-icon-seek-prev"/>   
+                        <p:commandButton actionListener="#{controleEmprestimo.dao.proximo()}"
+                                         update="listagem" icon="ui-icon-seek-next"/>   
+                        <p:commandButton actionListener="#{controleEmprestimo.dao.ultimo()}"
+                                         update="listagem" icon="ui-icon-seek-end"/>                          
+                    </p:panelGrid>
+                </div>
+                <p:dataTable value="#{controleEmprestimo.dao.listaObjetosHoje}" var="obj" id="listagem">
+                    <f:facet name="footer">
+                        <div align="center">
+                            <p:outputLabel value="#{controleEmprestimo.dao.mensagemNavegacao}"/>
+                        </div>
+                    </f:facet>
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{obj.id}"/>
+                    </p:column>
+                    <p:column headerText="Cliente">
+                        <p:outputLabel value="#{obj.cliente.nome}"/>
+                    </p:column>
+                    <p:column headerText="Funcionario">
+                        <p:outputLabel value="#{obj.funcionario.nome}"/>
+                    </p:column>
+                    <p:column headerText="Exemplar">
+                        <p:outputLabel value="#{obj.exemplar.livro.titulo}"/>
+                    </p:column> 
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

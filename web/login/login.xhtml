@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view encoding="ISO-8859-1" contentType="text/html">
+        <h:head>
+            <title>Login</title>
+            <h:outputStylesheet library="css" name="estilos.css"/>
+            <h:outputScript library="js" name="scripts.js"/>
+        </h:head>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" header="Login" style="text-align: center">
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <h:form>
+                <p:growl/>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="nomeUsuario" value="Nome 
+                                       Usuário:" />
+                        <p:inputText id="nomeUsuario"
+                                     value="#{controleLogin.usuario.login}" />
+
+                        <p:outputLabel for="senha" value="Senha:" />
+                        <p:password id="senha" value="#{controleLogin.usuario.senha}" />
+
+                        <p:commandButton value="Entrar"
+                                         icon="ui-icon-circle-check" action="#{controleLogin.doLogin}" ajax="false">
+                        </p:commandButton>
+
+                    </p:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="south">
+                <div align="center">Desenvolvido por Leonardo Souza</div>
+            </p:layoutUnit>
+        </p:layout>
+    </f:view>
+</html>

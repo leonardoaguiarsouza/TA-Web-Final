@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view encoding="ISO-8859-1" contentType="text/html">
+        <h:head>
+            <title>Login</title>
+            <h:outputStylesheet library="css" name="estilos.css"/>
+            <h:outputScript library="js" name="scripts.js"/>
+        </h:head>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" header="Login" style="text-align: center"></p:layoutUnit>
+            <p:layoutUnit position="center">
+                <ui:insert name="conteudo">
+                    <h:form>
+                        <div align="center">
+                            <p:panelGrid columns="2">
+                                <f:facet name="footer">
+                                    <div align="center">
+                                        <p:outputLabel value="Login"/>
+                                        <p:inputText value="#{controlePessoa.objeto.login}" size="10"/>
+                                        <br/>
+                                        <p:outputLabel value="Senha"/>
+                                        <p:inputText value="#{controlePessoa.objeto.senha}" size="10"/>
+                                        <br/>
+                                        <p:commandButton value="Entrar" action="#{controlePessoa.logar()}"/>
+                                    </div>
+                                </f:facet>
+                            </p:panelGrid>
+                        </div>
+                    </h:form>
+                </ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="south">
+                <div align="center">Desenvolvido por Leonardo Souza</div>
+            </p:layoutUnit>
+        </p:layout>
+    </f:view>
+
+</html>
