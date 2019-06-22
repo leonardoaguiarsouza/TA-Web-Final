@@ -29,10 +29,10 @@
                             </p:column>
                         </p:submenu>
                         <c:if test="#{empty controleLogin.usuario.nome}">
-                            <p:menuitem action="#{controleLogin.listar()}" value="Entrar" ajax="false" icon="ui-icon-star"/>
+                            <p:menuitem action="#{controleLogin.listar()}" value="Entrar" ajax="false" icon="ui-icon-star" style="float: right;"/>
                         </c:if>
                         <c:if test="#{!empty controleLogin.usuario.nome}">
-                            <p:submenu label="#{controleLogin.usuario.nome}" icon="ui-icon-person">
+                            <p:submenu label="#{controleLogin.usuario.nome}" icon="ui-icon-person" style="float: right;">
                                 <p:column>
                                     <p:submenu>
                                         <p:menuitem action="#{controleLogin.doLogout()}" value="Sair" ajax="false"/>   

@@ -16,21 +16,25 @@
             </p:layoutUnit>
             <p:layoutUnit position="center">
                 <h:form>
-                <p:growl/>
-                    <p:panelGrid columns="2">
-                        <p:outputLabel for="nomeUsuario" value="Nome 
-                                       Usuário:" />
-                        <p:inputText id="nomeUsuario"
-                                     value="#{controleLogin.usuario.login}" />
+                    <p:growl/>
+                    <div align="center">
+                        <p:panelGrid columns="2" style="margin-top: 50px;">
+                            <p:outputLabel for="nomeUsuario" value="Nome 
+                                           Usuário:" />
+                            <p:inputText id="nomeUsuario"
+                                         value="#{controleLogin.usuario.login}" />
 
-                        <p:outputLabel for="senha" value="Senha:" />
-                        <p:password id="senha" value="#{controleLogin.usuario.senha}" />
+                            <p:outputLabel for="senha" value="Senha:" />
+                            <p:password id="senha" value="#{controleLogin.usuario.senha}" />
+                        </p:panelGrid>
+                        <div align="center" style="margin-top: 10px;">
+                            <p:commandButton value="Entrar"
+                                             icon="ui-icon-circle-check" action="#{controleLogin.doLogin}" ajax="false">
+                            </p:commandButton>
+                        </div>
 
-                        <p:commandButton value="Entrar"
-                                         icon="ui-icon-circle-check" action="#{controleLogin.doLogin}" ajax="false">
-                        </p:commandButton>
+                    </div>
 
-                    </p:panelGrid>
                 </h:form>
             </p:layoutUnit>
             <p:layoutUnit position="south">
